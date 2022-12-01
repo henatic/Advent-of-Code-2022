@@ -6,28 +6,15 @@ mostThreeCal = []
 for x in f:
     if x.strip() == "":
         highestCalorieCount = max(highestCalorieCount, counter)
-        if len(mostThreeCal) < 3:
-            mostThreeCal.append(counter)
-        elif mostThreeCal[0] < counter:
-            mostThreeCal[0] = counter
-        elif mostThreeCal[1] < counter:
-            mostThreeCal[1] = counter
-        elif mostThreeCal[2] < counter:
-            mostThreeCal[2] = counter
+        mostThreeCal.append(counter)
         counter = 0
     else:
         counter += int(x)
 
 highestCalorieCount = max(highestCalorieCount, counter)
-if len(mostThreeCal) < 3:
-    mostThreeCal.append(counter)
-elif mostThreeCal[0] < counter:
-    mostThreeCal[0] = counter
-elif mostThreeCal[1] < counter:
-    mostThreeCal[1] = counter
-elif mostThreeCal[2] < counter:
-    mostThreeCal[2] = counter
+mostThreeCal.append(counter)
+mostThreeCal.sort(reverse=True)
 
-print(highestCalorieCount)
-print(mostThreeCal)
-print(mostThreeCal[0] + mostThreeCal[1] + mostThreeCal[2])
+print("Most calories: " + str(highestCalorieCount))
+print("Highest three calories: " + str(mostThreeCal[0]) + " " + str(mostThreeCal[1]) + " " + str(mostThreeCal[2]))
+print("Total of the three: " + str(mostThreeCal[0] + mostThreeCal[1] + mostThreeCal[2]))
